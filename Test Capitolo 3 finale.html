@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Avanzato: Valutazione e Progettazione Educativa (30 Domande)</title>
+    <style>
+        /* CSS Generali */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .quiz-container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .question-block {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-left: 5px solid #007bff;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .question-number {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #007bff;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        /* CSS per Interazione iOS: Tweak per migliorare il tocco sui radio button */
+        .answer-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            border: 1px solid #eee;
+            touch-action: manipulation; /* Cruciale per la reattività del tocco */
+        }
+        .answer-option:hover {
+            background-color: #e9f7ff;
+        }
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+            min-width: 24px; 
+            min-height: 24px;
+            /* Forza l'aspetto standard del radio button su Safari */
+            -webkit-appearance: radio; 
+            cursor: pointer;
+            transform: none; 
+        }
+
+        /* CSS per Risultati */
+        #submitBtn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 30px;
+        }
+        #submitBtn:hover {
+            background-color: #218838;
+        }
+        #results {
+            margin-top: 40px;
+            padding: 20px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            display: none; 
+        }
+        .correct {
+            background-color: #d4edda;
+            border-color: #155724;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            border-color: #721c24;
+            color: #721c24;
+        }
+        .result-details {
+            margin-top: 20px;
+            font-size: 0.9em;
+            font-weight: normal;
+            text-align: left;
+        }
+        .result-details p {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .result-details .correct-answer {
+            background-color: #d4edda;
+            border-left: 5px solid #28a745;
+        }
+        .result-details .user-answer {
+            background-color: #f8d7da;
+            border-left: 5px solid #dc3545;
+        }
+        .result-details .not-answered {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Test Avanzato: Valutazione e Progettazione Educativa (30 Domande)</h1>
+    <form id="quizForm">
+        <div class="question-block" data-question-id="1">
+            <span class="question-number">Domanda 1</span>
+            <p class="question-text">Secondo Barbier (1977), qual è la finalità pedagogica prevalente della valutazione educativa?</p>
+            <label class="answer-option">
+                <input type="radio" name="q1" value="A"> Misurare con rigore i risultati di apprendimento per la classificazione finale dello studente.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q1" value="B"> Fornire un verdetto finale sul raggiungimento degli obiettivi didattici, fungendo da giudizio sommario.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q1" value="C"> Migliorare continuamente il progetto educativo e le strategie didattiche, piuttosto che limitarsi alla misurazione.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="2">
+            <span class="question-number">Domanda 2</span>
+            <p class="question-text">Nella logica della complessità (Paparella, Castoldi), come sono concepite le fasi di progettazione, implementazione e valutazione?</p>
+            <label class="answer-option">
+                <input type="radio" name="q2" value="A"> Rigide, lineari e predeterminate, con l'obiettivo di controllare tutte le variabili contestuali.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q2" value="B"> Dinamiche, ricorsive e circolari, ammettendo che caso e imprevedibilità siano occasioni di apprendimento.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q2" value="C"> Separate, con la progettazione che si conclude prima che l'attuazione e la valutazione possano iniziare in sequenza.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="3">
+            <span class="question-number">Domanda 3</span>
+            <p class="question-text">Quale delle seguenti coppie di concetti definisce i riferimenti necessari all'atto valutativo secondo Barbier e Hadji?</p>
+            <label class="answer-option">
+                <input type="radio" name="q3" value="A"> Output (risultato immediato) e Outcome (beneficio a lungo termine).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q3" value="B"> Référé (la prestazione osservata) e Référent (l'obiettivo o modello da raggiungere).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q3" value="C"> Efficacia (raggiungimento obiettivi) e Efficienza (uso delle risorse).
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="4">
+            <span class="question-number">Domanda 4</span>
+            <p class="question-text">Qual è il focus distintivo del modello di 'Programmazione per Competenze' rispetto agli altri modelli (obiettivi, sfondo integratore, concetti)?</p>
+            <label class="answer-option">
+                <input type="radio" name="q4" value="A"> Garantire l'acquisizione di conoscenze teoriche e nozioni disciplinari precise.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q4" value="B"> Sviluppare la capacità di usare conoscenze e abilità in situazioni reali per risolvere problemi.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q4" value="C"> Collegare le attività didattiche intorno a un tema o una storia che dia continuità agli apprendimenti.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="5">
+            <span class="question-number">Domanda 5</span>
+            <p class="question-text">La Tassonomia di Bloom (1956) classifica gli obiettivi educativi in tre domini principali. Quale dominio è legato alla sfera delle emozioni, dei valori e dell'interiorizzazione?</p>
+            <label class="answer-option">
+                <input type="radio" name="q5" value="A"> Il dominio cognitivo.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q5" value="B"> Il dominio psicomotorio.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q5" value="C"> Il dominio affettivo.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="6">
+            <span class="question-number">Domanda 6</span>
+            <p class="question-text">In una prospettiva docimologica, qual è la principale differenza tra Misurazione e Valutazione?</p>
+            <label class="answer-option">
+                <input type="radio" name="q6" value="A"> La Misurazione è l'interpretazione del dato, mentre la Valutazione è la raccolta oggettiva del dato.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q6" value="B"> La Misurazione è quantitativa e si concentra sul prodotto, mentre la Valutazione è qualitativa e riguarda l'intero processo educativo.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q6" value="C"> Sono due termini intercambiabili che indicano lo stesso momento di verifica dell'apprendimento.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="7">
+            <span class="question-number">Domanda 7</span>
+            <p class="question-text">Quale tra le seguenti non è un'analisi utilizzata per valutare in modo efficace il progetto, secondo Galliani (2015)?</p>
+            <label class="answer-option">
+                <input type="radio" name="q7" value="A"> Analisi della coerenza esterna (confronto con standard nazionali o locali).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q7" value="B"> Analisi della risonanza mediatica (impatto sulla stampa e sui social media).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q7" value="C"> Analisi della sostenibilità (realismo rispetto a tempi, spazi e risorse).
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="8">
+            <span class="question-number">Domanda 8</span>
+            <p class="question-text">Secondo Mager (1972), un obiettivo di apprendimento è significativo se risponde a tre domande chiave. Quale aspetto non è incluso in queste tre domande?</p>
+            <label class="answer-option">
+                <input type="radio" name="q8" value="A"> Il motivo per cui l'allievo vuole farlo (motivazione intrinseca).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q8" value="B"> Cosa deve saper fare l'allievo (performance).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q8" value="C"> Con quale livello di abilità deve essere svolto (standard).
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="9">
+            <span class="question-number">Domanda 9</span>
+            <p class="question-text">La valutazione formativa, svolgendo una funzione di monitoraggio continuo, si avvale principalmente del Feedback. Quale caratteristica rende il feedback 'davvero efficace' secondo gli studi citati?</p>
+            <label class="answer-option">
+                <input type="radio" name="q9" value="A"> Essere sommativo, cioè sintetizzare il risultato finale in un unico giudizio complessivo.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q9" value="B"> Essere tempestivo e spiegare sia quali aspetti vanno bene, sia quali no e perché, indicando come migliorare.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q9" value="C"> Concentrarsi unicamente sui punti di debolezza (i vuoti) per stimolare l'impegno dello studente.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="10">
+            <span class="question-number">Domanda 10</span>
+            <p class="question-text">In un progetto educativo, quando si parla di 'Analisi dei Bisogni Formativi', si analizzano i bisogni di tre soggetti principali. Quale soggetto non rientra in questa triade?</p>
+            <label class="answer-option">
+                <input type="radio" name="q10" value="A"> Il fruitore finale (il cliente, cioè chi partecipa all'intervento).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q10" value="B"> L'osservatore esterno (l'esperto di valutazione che non è direttamente coinvolto nell'erogazione).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q10" value="C"> L'ente richiedente (il committente, cioè chi richiede la formazione).
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="11">
+            <span class="question-number">Domanda 11</span>
+            <p class="question-text">Qual è il principale obiettivo della fase di 'Articolazione dei Contenuti' all'interno del processo di progettazione educativa?</p>
+            <label class="answer-option">
+                <input type="radio" name="q11" value="A"> Identificare le risorse umane, organizzative e amministrative necessarie per l'intervento.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q11" value="B"> Decidere cosa gli studenti devono conoscere, focalizzandosi sulla costruzione di nuovi significati e sulla comprensione personale.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q11" value="C"> Raccogliere informazioni sulle motivazioni e i bisogni oggettivi e soggettivi degli studenti.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="12">
+            <span class="question-number">Domanda 12</span>
+            <p class="question-text">Nella fase di valutazione finale, l'analisi dei risultati considera tre livelli: output, outcome e outreach. Cosa misura l'Outreach?</p>
+            <label class="answer-option">
+                <input type="radio" name="q12" value="A"> I risultati immediati e quantificabili dell'intervento formativo.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q12" value="B"> I benefici a lungo termine e le modifiche che permangono sui destinatari.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q12" value="C"> Gli effetti più ampi e duraturi sul contesto sociale e istituzionale in cui si è svolto il progetto.
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="13">
+            <span class="question-number">Domanda 13</span>
+            <p class="question-text">L'introduzione del concetto di competenza nella scuola, dopo l'autonomia scolastica, ha avuto lo scopo principale di:</p>
+            <label class="answer-option">
+                <input type="radio" name="q13" value="A"> Separare completamente la conoscenza teorica dalla sua applicazione pratica per focalizzarsi solo sul sapere puro.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q13" value="B"> Superare i limiti dello studio solo teorico, collegando le conoscenze ai processi di insegnamento-apprendimento e alla realtà.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q13" value="C"> Rafforzare la rigida Programmazione centralizzata sui contenuti da trasmettere, tipica dei modelli precedenti.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="14">
+            <span class="question-number">Domanda 14</span>
+            <p class="question-text">Qual è il tratto distintivo della 'Valutazione Autovalutativa' per l'educatore?</p>
+            <label class="answer-option">
+                <input type="radio" name="q14" value="A"> La formulazione di un giudizio esterno sul progetto da parte di un ente terzo indipendente.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q14" value="B"> Il coinvolgimento critico e riflessivo dell'educatore sul proprio operato e sulle strategie adottate.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q14" value="C"> La verifica finale e sommativa dei risultati ottenuti dagli allievi al termine del percorso.
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="15">
+            <span class="question-number">Domanda 15</span>
+            <p class="question-text">Secondo la Teoria Costruttivista, come viene considerata la conoscenza da parte dell'allievo?</p>
+            <label class="answer-option">
+                <input type="radio" name="q15" value="A"> Come qualcosa di esterno, trasmessa dal docente e da riprodurre fedelmente.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q15" value="B"> Come qualcosa che l'allievo costruisce personalmente in relazione al proprio vissuto e contesto.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q15" value="C"> Come una serie di schemi semplici e rigidi, derivati da una programmazione razionale e predeterminata.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="16">
+            <span class="question-number">Domanda 16</span>
+            <p class="question-text">A quale fase del processo valutativo appartiene l'identificazione di obiettivi e strategie, prima dell'inizio del progetto?</p>
+            <label class="answer-option">
+                <input type="radio" name="q16" value="A"> Valutazione In Itinere.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q16" value="B"> Valutazione Ex Post.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q16" value="C"> Valutazione Ex Ante.
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="17">
+            <span class="question-number">Domanda 17</span>
+            <p class="question-text">Nella logica della razionalità tecnica, il modello di progettazione è spesso descritto come 'ingegneristico'. Qual è la sua principale conseguenza pratica?</p>
+            <label class="answer-option">
+                <input type="radio" name="q17" value="A"> Il progetto è flessibile e si adatta continuamente ai cambiamenti del contesto e ai bisogni emergenti.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q17" value="B"> Vi è una linearità e prevedibilità tra progettazione, attuazione e valutazione, dove tutto è deciso fin dall'inizio.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q17" value="C"> Si riconoscono e si modificano le routine difensive come pratica fondamentale per il miglioramento.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="18">
+            <span class="question-number">Domanda 18</span>
+            <p class="question-text">Quale delle seguenti opzioni descrive meglio la Valutazione In Itinere?</p>
+            <label class="answer-option">
+                <input type="radio" name="q18" value="A"> Ha una Funzione Diagnostica e serve a stabilire da dove partire per costruire il progetto.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q18" value="B"> Ha una Funzione Formativa e serve a monitorare l'andamento dell'apprendimento, consentendo di rimodellare l'intervento.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q18" value="C"> Ha una Funzione Certificativa e fornisce un giudizio complessivo sui risultati finali.
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="19">
+            <span class="question-number">Domanda 19</span>
+            <p class="question-text">La Progettazione Didattica si distingue dalla Programmazione. Quale affermazione descrive in modo più preciso la Progettazione?</p>
+            <label class="answer-option">
+                <input type="radio" name="q19" value="A"> È un'attività decisa 'dall'alto', con un carattere più politico, che non coinvolge direttamente i docenti.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q19" value="B"> È un processo che coinvolge insegnanti e formatori, che adattano le indicazioni programmatiche ai bisogni reali degli studenti.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q19" value="C"> È un processo esclusivamente razionale e tecnico, totalmente privo di aspetti creativi e ipotetici.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="20">
+            <span class="question-number">Domanda 20</span>
+            <p class="question-text">Qual è la prima e più importante fase metodologica del processo unitario di progettazione?</p>
+            <label class="answer-option">
+                <input type="radio" name="q20" value="A"> Articolazione dei contenuti.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q20" value="B"> Definizione degli obiettivi di apprendimento.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q20" value="C"> Analisi dei bisogni formativi.
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="21">
+            <span class="question-number">Domanda 21</span>
+            <p class="question-text">Cosa si intende per 'Bisogni Oggettivi' nell'ambito dell'analisi dei bisogni formativi?</p>
+            <label class="answer-option">
+                <input type="radio" name="q21" value="A"> Le aspettative, la motivazione individuale e le speranze degli studenti e delle loro famiglie.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q21" value="B"> Le necessità del committente, del contesto organizzativo, e gli aspetti territoriali e istituzionali.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q21" value="C"> Ciò che il formatore ritiene sia essenziale per la crescita personale dell'allievo.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="22">
+            <span class="question-number">Domanda 22</span>
+            <p class="question-text">Quale autore ha teorizzato l'idea che ogni azione non automatica implichi una valutazione, rendendola una parte naturale di ogni attività umana?</p>
+            <label class="answer-option">
+                <input type="radio" name="q22" value="A"> John Dewey (1939).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q22" value="B"> Jean-Pierre Barbier (1977).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q22" value="C"> Benjamin Bloom (1956).
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="23">
+            <span class="question-number">Domanda 23</span>
+            <p class="question-text">Il 'Progetto Educativo di Servizio' è un documento che esplicita la 'macroprogettazione'. Quale tra le seguenti è una sua funzione tipica?</p>
+            <label class="answer-option">
+                <input type="radio" name="q23" value="A"> Descrivere in dettaglio la vita quotidiana, gli spazi e i materiali di un singolo nido o scuola.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q23" value="B"> Stabilire i valori, le finalità educative e le linee guida pedagogiche generali dell'ente di riferimento.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q23" value="C"> Determinare gli strumenti di monitoraggio e verifica per l'accertamento finale dei risultati degli allievi.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="24">
+            <span class="question-number">Domanda 24</span>
+            <p class="question-text">Perché il principio di 'Collegialità' è fondamentale nel processo valutativo?</p>
+            <label class="answer-option">
+                <input type="radio" name="q24" value="A"> Per limitare la valutazione unicamente alla verifica finale dei risultati di apprendimento.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q24" value="B"> Per unire diversi punti di vista e trasformare la struttura educativa in una vera comunità educante.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q24" value="C"> Per garantire che solo l'educatore rifletta criticamente su sé stesso, senza interferenze esterne.
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="25">
+            <span class="question-number">Domanda 25</span>
+            <p class="question-text">Nel processo di progettazione, cosa si intende per 'Efficacia' (valutazione della qualità)?</p>
+            <label class="answer-option">
+                <input type="radio" name="q25" value="A"> Come sono state usate le risorse (tempo, soldi, personale) per ottenere i risultati.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q25" value="B"> Quanto sono stati raggiunti gli obiettivi stabiliti, in termini di risultati attesi.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q25" value="C"> La coerenza tra le previsioni del progetto e gli standard nazionali o locali di riferimento.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="26">
+            <span class="question-number">Domanda 26</span>
+            <p class="question-text">La valutazione educativa è definita 'multireferenziale'. Cosa implica questo termine?</p>
+            <label class="answer-option">
+                <input type="radio" name="q26" value="A"> Che si basa unicamente sui voti e sui giudizi finali (prodotti didattici) per non disperdere il focus.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q26" value="B"> Che coinvolge esclusivamente i sistemi educativi nazionali e internazionali, senza considerare il singolo allievo.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q26" value="C"> Che si basa su più punti di vista e più aspetti, valutando i prodotti didattici, i processi cognitivi e la dimensione emotivo-motivazionale.
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="27">
+            <span class="question-number">Domanda 27</span>
+            <p class="question-text">In quale contesto pedagogico si è passati da una scuola basata su programmi rigidi a una che promuove la programmazione educativa e didattica, più flessibile?</p>
+            <label class="answer-option">
+                <input type="radio" name="q27" value="A"> Durante l'affermazione della teoria comportamentista di Skinner e Bloom negli anni '50 e '60.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q27" value="B"> A seguito della nascita della visione costruttivista, che valorizza la costruzione personale della conoscenza.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q27" value="C"> Con il D.P.R. n. 275/1999 (Autonomia Scolastica), che ha reso la valutazione unicamente sommativa.
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="28">
+            <span class="question-number">Domanda 28</span>
+            <p class="question-text">Quale tra i seguenti è un principio fondamentale per gestire la complessità nella progettazione educativa?</p>
+            <label class="answer-option">
+                <input type="radio" name="q28" value="A"> Rigidità, per garantire la fedele esecuzione del piano iniziale senza deviazioni.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q28" value="B"> Flessibilità, ovvero la capacità di adattarsi ai cambiamenti, essere aperti e rinnovarsi costantemente.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q28" value="C"> Isolamento, in cui l'educatore opera in autonomia per non contaminare il progetto con punti di vista esterni.
+            </label>
+        </div>
+        
+        <div class="question-block" data-question-id="29">
+            <span class="question-number">Domanda 29</span>
+            <p class="question-text">Quale è il ruolo della valutazione nella fase di attuazione (erogazione) del progetto?</p>
+            <label class="answer-option">
+                <input type="radio" name="q29" value="A"> Stabilire se gli obiettivi formativi sono stati raggiunti in modo definitivo (funzione sommativa).
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q29" value="B"> Funzione descrittiva e riorientativa, per confrontare la situazione educativa con gli obiettivi iniziali e riprogettare.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q29" value="C"> Solo misurare i dati e le informazioni raccolte, senza alcuna interpretazione o giudizio (funzione di verifica).
+            </label>
+        </div>
+
+        <div class="question-block" data-question-id="30">
+            <span class="question-number">Domanda 30</span>
+            <p class="question-text">Quale delle seguenti affermazioni descrive in modo più completo il ruolo finale della valutazione educativa, secondo la sua funzione descrittiva e riorientativa?</p>
+            <label class="answer-option">
+                <input type="radio" name="q30" value="A"> Stabilire unicamente l'efficienza, ovvero quanto si sono risparmiate risorse rispetto alle previsioni iniziali.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q30" value="B"> Descrivere la situazione educativa e confrontarla con gli obiettivi iniziali per aiutare a riprogettare l'intervento.
+            </label>
+            <label class="answer-option">
+                <input type="radio" name="q30" value="C"> Raccogliere dati oggettivi sui bisogni del committente e del contesto prima dell'inizio del progetto (ex ante).
+            </label>
+        </div>
+        
+        <button type="button" id="submitBtn" onclick="calcolaPunteggio(this)">Consegna e Calcola Punteggio</button>
+
+    </form>
+
+    <div id="results">
+        <p id="scoreText"></p>
+        <div id="summary"></div>
+    </div>
+</div>
+
+<script>
+    // Mappa delle risposte corrette
+    const correctAnswers = {
+        q1: 'C', q2: 'B', q3: 'B', q4: 'B', q5: 'C',
+        q6: 'B', q7: 'B', q8: 'A', q9: 'B', q10: 'B',
+        q11: 'B', q12: 'C', q13: 'B', q14: 'B', q15: 'B',
+        q16: 'C', q17: 'B', q18: 'B', q19: 'B', q20: 'C',
+        q21: 'B', q22: 'A', q23: 'B', q24: 'B', q25: 'B',
+        q26: 'C', q27: 'B', q28: 'B', q29: 'B', q30: 'B'
+    };
+    
+    // Spiegazioni e Razionali
+    const rationales = {
+        q1: { text: "Barbier afferma che la valutazione serve «più a migliorare che a misurare», evidenziando la sua funzione di regolazione e riflessione continua.", correctValue: 'C' },
+        q2: { text: "La logica della complessità rifiuta la linearità e accoglie l'imprevedibilità, prevedendo che le fasi si modifichino continuamente in un ciclo ricorsivo.", correctValue: 'B' },
+        q3: { text: "Il référé è «quello che c’è» (la prestazione osservata), il référent è «quello che si vuole ottenere» (l’obiettivo o modello). La valutazione è il confronto tra i due.", correctValue: 'B' },
+        q4: { text: "La programmazione per competenze punta sullo sviluppo del «saper fare» e del «saper usare ciò che si sa in situazioni diverse» (problem solving in contesti reali).", correctValue: 'B' },
+        q5: { text: "Il dominio affettivo riguarda l'area delle emozioni, dei valori, degli atteggiamenti e dell'interiorizzazione.", correctValue: 'C' },
+        q6: { text: "La misurazione stima in modo quantitativo il prodotto; la valutazione è interpretativa, qualitativa e descrittiva dei dati raccolti, assegnando un valore/giudizio.", correctValue: 'B' },
+        q7: { text: "Le analisi di Galliani sono: coerenza esterna, coerenza interna e sostenibilità. La risonanza mediatica non è un'analisi tecnica di progettazione.", correctValue: 'B' },
+        q8: { text: "Le domande di Mager sono: 'Cosa deve fare l'allievo' (Performance), 'In quali situazioni deve farlo' (Condition) e 'Come deve farlo' (Standard). La motivazione non è richiesta per la definizione operativa dell'obiettivo.", correctValue: 'A' },
+        q9: { text: "Un feedback efficace è tempestivo, positivo/costruttivo e deve spiegare 'cosa migliorare e come farlo', andando oltre il semplice giudizio.", correctValue: 'B' },
+        q10: { text: "La triade dei bisogni analizzati è composta da: committente, cliente e formatore/personale coinvolto. L'osservatore esterno non rientra.", correctValue: 'B' },
+        q11: { text: "L'articolazione dei contenuti consiste nel decidere cosa gli studenti devono conoscere, andando oltre la semplice memorizzazione e mirando alla costruzione di nuovi significati.", correctValue: 'B' },
+        q12: { text: "L'outreach valuta l'impatto e gli effetti più ampi e duraturi sul contesto sociale e istituzionale in cui si è svolto il progetto.", correctValue: 'C' },
+        q13: { text: "Il concetto di competenza è nato per superare i limiti del vecchio modo di fare scuola, basato solo sullo studio teorico, per collegare conoscenze all'esperienza e all'azione.", correctValue: 'B' },
+        q14: { text: "La valutazione autovalutativa «coinvolge l’educatore che riflette criticamente su se stesso» e sulla propria prassi.", correctValue: 'B' },
+        q15: { text: "Il costruttivismo considera la conoscenza come qualcosa che l’allievo «costruisce personalmente, in relazione al proprio vissuto e contesto» (apprendimento attivo).", correctValue: 'B' },
+        q16: { text: "La valutazione Ex Ante è quella che avviene «prima dell'inizio del progetto, per definire obiettivi e strategie» (funzione diagnostica).", correctValue: 'C' },
+        q17: { text: "La logica della razionalità tecnica si basa sulla «linearità tra progettazione, attuazione e valutazione», cercando di controllare le variabili e prevedere tutto fin dall'inizio.", correctValue: 'B' },
+        q18: { text: "La valutazione In Itinere ha funzione Formativa e serve a monitorare l'andamento del percorso, consentendo la regolazione e rimodellazione continua dell'intervento.", correctValue: 'B' },
+        q19: { text: "La Progettazione è un'attività che coinvolge i docenti, che adattano le indicazioni programmatiche (Programmazione) ai bisogni reali e al contesto degli studenti.", correctValue: 'B' },
+        q20: { text: "La prima e più importante fase è l'analisi dei bisogni formativi, da cui si raccolgono informazioni sulle necessità e si definiscono le priorità.", correctValue: 'C' },
+        q21: { text: "I bisogni oggettivi sono legati alle «necessità del committente e al contesto organizzativo», cioè agli aspetti istituzionali, territoriali e di sistema.", correctValue: 'B' },
+        q22: { text: "Secondo Dewey (1939), ogni azione che non è automatica implica una valutazione, suggerendo che valutare è parte naturale dell'attività umana.", correctValue: 'A' },
+        q23: { text: "Il Progetto Educativo di Servizio (macroprogettazione) stabilisce valori, finalità educative e linee guida pedagogiche generali dell'ente (identità educativa).", correctValue: 'B' },
+        q24: { text: "La collegialità permette di «unire diversi punti di vista e di trasformare la struttura educativa in una vera comunità educante», garantendo una valutazione più completa e condivisa.", correctValue: 'B' },
+        q25: { text: "L'Efficacia misura «quanto sono stati raggiunti gli obiettivi stabiliti» (fare le cose giuste). L'Efficienza misura come sono state usate le risorse (farle bene).", correctValue: 'B' },
+        q26: { text: "La valutazione è multireferenziale perché si basa su più aspetti e punti di vista: prodotti, processi cognitivi, e la dimensione emotivo-motivazionale.", correctValue: 'C' },
+        q27: { text: "Il passaggio a una programmazione più flessibile è una conseguenza della visione costruttivista, che valorizza l'esperienza e la costruzione personale del sapere da parte dell'allievo.", correctValue: 'B' },
+        q28: { text: "La Flessibilità è un principio guida essenziale per gestire la complessità, consentendo al progetto di adattarsi, essere aperto e rinnovarsi costantemente di fronte all'imprevisto.", correctValue: 'B' },
+        q29: { text: "La valutazione in questa fase (In Itinere) ha funzione formativa e serve per confrontare la situazione attuale con gli obiettivi iniziali e riprogettare/regolare l'intervento.", correctValue: 'B' },
+        q30: { text: "Secondo Lanzara, la valutazione ha una funzione descrittiva e riorientativa: descrive la situazione, la confronta con gli obiettivi e i risultati ottenuti, e aiuta a riprogettare il ciclo successivo.", correctValue: 'B' }
+    };
+    
+    // Funzione globale chiamata direttamente dall'attributo onclick
+    function calcolaPunteggio(btn) {
+        let score = 0;
+        let totalQuestions = 30;
+        let summaryHTML = '<h2>Dettaglio Risultati</h2>';
+        const form = document.getElementById('quizForm');
+        const resultsDiv = document.getElementById('results');
+        const scoreText = document.getElementById('scoreText');
+        const summary = document.getElementById('summary');
+
+        resultsDiv.style.display = 'block';
+        summary.innerHTML = ''; 
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const qName = 'q' + i;
+            const questionBlock = document.querySelector(`.question-block[data-question-id="${i}"]`);
+            const selectedOption = form.elements[qName] ? form.elements[qName].value : ''; 
+            const correctAnswerValue = correctAnswers[qName];
+            const isCorrect = selectedOption === correctAnswerValue;
+            
+            let correctAnswerText = '';
+            let userSelectionText = '';
+            
+            const options = questionBlock.querySelectorAll('.answer-option input[type="radio"]');
+            options.forEach(option => {
+                const label = option.closest('label');
+                label.classList.remove('correct', 'incorrect'); 
+
+                if (option.value === correctAnswerValue) {
+                    correctAnswerText = label.textContent.trim();
+                    label.classList.add('correct');
+                }
+
+                if (option.checked) {
+                    userSelectionText = label.textContent.trim();
+                    if (!isCorrect) {
+                        label.classList.add('incorrect');
+                    }
+                }
+            });
+
+            if (isCorrect) {
+                score++;
+                questionBlock.style.borderLeftColor = '#28a745';
+                summaryHTML += `<p class="correct-answer">Domanda ${i}: ✅ Risposta Corretta (${correctAnswerValue}).</p>`;
+            } else {
+                questionBlock.style.borderLeftColor = '#dc3545';
+                
+                const rationale = rationales[qName] ? rationales[qName].text : 'Nessuna spiegazione disponibile.';
+
+                summaryHTML += `
+                    <p class="${selectedOption ? 'user-answer' : 'not-answered'}">Domanda ${i}: ❌ Risposta Errata. (Corretta: ${correctAnswerValue})</p>
+                    <div class="result-details">
+                        <p class="correct-answer">Risposta esatta: ${correctAnswerText}</p>
+                        <p style="background-color: #f1f8e9; border-left: 5px solid #66bb6a;">Spiegazione: ${rationale}</p>
+                        ${selectedOption ? `<p class="user-answer">La tua scelta: ${userSelectionText}</p>` : `<p class="not-answered">Nessuna risposta data.</p>`}
+                    </div>
+                `;
+            }
+        }
+
+        const percentage = (score / totalQuestions) * 100;
+        let statusColor = percentage >= 80 ? '#28a745' : '#dc3545';
+        
+        scoreText.innerHTML = `Hai risposto correttamente a ${score} domande su ${totalQuestions} (${percentage.toFixed(2)}%).`;
+        scoreText.style.color = statusColor;
+        scoreText.style.borderColor = statusColor;
+        summary.innerHTML = summaryHTML;
+
+        // Disabilita il pulsante e le opzioni dopo la verifica
+        btn.disabled = true;
+        document.querySelectorAll('input[type="radio"]').forEach(radio => radio.disabled = true);
+    }
+</script>
+
+</body>
+</html>
